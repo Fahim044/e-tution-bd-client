@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from './Logo';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
     const links=<>
@@ -32,8 +32,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn bg-primary1">Login</a>
-    <a className="btn text-primary1 btn-outline mx-2 ">Register</a>
+    <Link to="/auth/login" className="btn bg-primary1">Login</Link>
+    <Link to="/auth/register" className="btn text-primary1 btn-outline mx-2 ">Register</Link>
     <>
      <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

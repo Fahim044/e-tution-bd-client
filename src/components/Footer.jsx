@@ -1,12 +1,13 @@
 import React from 'react';
 import Logo from './Logo';
 import { Link } from 'react-router';
-import { FaFacebook, FaInstagramSquare, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagramSquare, FaLinkedin, FaRegCopyright, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
-        <div className='flex justify-around flex-col md:flex-row '>
+        <>
+        <div className='flex justify-around flex-col md:flex-row py-4'>
             {/* left side */}
             <div className='space-y-5'>
                 <Logo></Logo>
@@ -41,6 +42,11 @@ const Footer = () => {
         </div>
             </div>
         </div>
+        <div className='justify-center items-center flex gap-2  border-t'>
+            <FaRegCopyright />
+        <h2>E-TUTION BD 2025</h2>
+        </div>
+        </>
     );
 };
 
