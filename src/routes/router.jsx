@@ -1,0 +1,29 @@
+import { createBrowserRouter } from "react-router";
+import RootLayout from "../layouts/RootLayout";
+
+export const router=createBrowserRouter([
+    {
+        path:'/',
+        element:<RootLayout/>,
+        errorElement:<p>Error 404</p>,
+        children:[
+            {
+                path:'tutions',
+                element:<p>tutions</p>
+            },
+            {
+                path:'tutors',
+                element:<p>tutors</p>
+            },
+            {
+                path:'about',
+                element:<p>about</p>
+            },
+            {
+                path:'contact',
+                element:<p>contact</p>
+            },
+
+        ]
+    }
+])
