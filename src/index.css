@@ -9,3 +9,6 @@ li a.active{
     @apply  font-semibold bg-linear-to-r from-blue-800 to-blue-400 text-transparent bg-clip-text
    
 }
+.text-primary1{
+    @apply   bg-linear-to-r from-blue-800 to-blue-400 text-transparent bg-clip-text
+}
