@@ -1,6 +1,8 @@
 
 PACKAGES USED IN THIS PROJECT:
-(i) TailwindCSS
-(ii) DaisyUI
-(iii) React-icons
-(iv) React-Router
+1. TailwindCSS
+2. DaisyUI
+3. React-icons
+4. React-Router
+5. react-hook-form
+6. React-Toastify

@@ -1,8 +1,27 @@
 import React from 'react';
 import Logo from './Logo';
 import { Link, NavLink } from 'react-router';
+import useAuth from '../hooks/useAuth';
 
+import userImg from '../assets/User.png';
+import Loading from './Loading';
+import { toast } from 'react-toastify';
 const Navbar = () => {
+    const {user,loading,logOut}=useAuth();
+    
+    const handleLogOut=()=>{
+        logOut()
+        .then(()=>{
+            toast.success('Logged Out Successfully');
+        })
+        .catch(error=>{
+            toast.error(error.message);
+        })
+    };
+    if(loading)
+    {
+        return <Loading></Loading>
+    }
     const links=<>
     <li><NavLink to="/">Home</NavLink></li>
     <li><NavLink to="/tutions">Tutions</NavLink></li>
@@ -32,27 +51,38 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/auth/login" className="btn bg-primary1">Login</Link>
-    <Link to="/auth/register" className="btn text-primary1 btn-outline mx-2 ">Register</Link>
-    <>
+    {user?
+
+<>
      <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
-            alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            alt="Profile Photo"
+            src={user?.photoURL || userImg} />
+           
         </div>
       </div>
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Dashboard</a></li>
-        <li><a className="">Profile</a></li>
-        <li><a>Logout</a></li>
+        <li><Link>Dashboard</Link></li>
+        <li><Link className="">Profile</Link></li>
+        <li><Link onClick={handleLogOut} to="/auth/login">Logout</Link></li>
       </ul>
     </div>
-  
     </>
+
+    
+    :
+ <>
+ <Link to="/auth/login" className="btn bg-primary1">Login</Link>
+    <Link to="/auth/register" className="btn text-primary1 btn-outline mx-2 ">Register</Link>   
+    </>
+
+}
+    
+   
   </div>
 </div>
     );
