@@ -8,7 +8,7 @@ import Loading from './Loading';
 import { toast } from 'react-toastify';
 const Navbar = () => {
     const {user,loading,logOut}=useAuth();
-    
+    // console.log(user?.photoURL);
     const handleLogOut=()=>{
         logOut()
         .then(()=>{
@@ -57,9 +57,10 @@ const Navbar = () => {
      <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img
+          {/* <img
             alt="Profile Photo"
-            src={user?.photoURL || userImg} />
+            src={user?.photoURL || userImg} /> */}
+            <img src={user.photoURL?user.photoURL:userImg} alt="" />
            
         </div>
       </div>
