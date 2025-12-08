@@ -3,13 +3,19 @@ import RootLayout from "../layouts/RootLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import Error404 from "../pages/Error404";
+import Home from "../components/Home/Home";
 
 export const router=createBrowserRouter([
     {
         path:'/',
         element:<RootLayout/>,
-        errorElement:<p>Error 404</p>,
+        errorElement:<Error404></Error404>,
         children:[
+            {
+                index:true,
+                Component:Home
+            },
             {
                 path:'tutions',
                 element:<p>tutions</p>
