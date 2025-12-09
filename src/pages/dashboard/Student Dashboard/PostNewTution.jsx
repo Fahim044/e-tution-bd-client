@@ -76,7 +76,16 @@ const PostNewTution = () => {
             <fieldset className="fieldset">
             {/* Days/week */}
           <label className="label">Days/week</label>
-          <input {...register('days')} type="text" className="input w-full" placeholder="Days/week" />
+          <input {...register('days',
+            {validate:(value)=>{
+                const num=Number(value);
+if(isNaN(num))  return "Days Must Be A Number";
+                
+                return num<=7 || "Days cannot be greater than 7";
+            }}
+          )} type="text" className="input w-full" placeholder="Days/week" />
+
+          {errors.days && <p className='text-sm text-red-500'>{errors.days.message}</p>}
           {/* Teaching Time */}
           <label className="label">Teaching Time</label>
           <input {...register('teachingTime')} type="text" className="input w-full" placeholder="Teaching Time(e.g: 10:00AM-11:30AM)" />

@@ -13,7 +13,7 @@ const TutionDetails = () => {
             return res.data;
         }
     });
-    const {subject,studentClass,location,budget,school,days,teachingTime,studentGender,curriculum,createdAt,status}=tution;
+    const {subject,studentClass,location,budget,school,days,teachingTime,studentGender,curriculum,details,createdAt,status}=tution;
     
     return (
         <div className='md:w-1/2 mx-auto'>
@@ -28,6 +28,7 @@ const TutionDetails = () => {
             <p>Teaching Time: <span className='font-semibold'>{teachingTime}</span></p>
             <p>Student Gender: <span className='font-semibold'>{studentGender}</span></p>
             <p>Curriculum: <span className='font-semibold'>{curriculum}</span></p>
+            <p>Details: <span className='font-semibold'>{details}</span></p>
             <p>Created At: <span className='font-semibold'>{createdAt}</span></p>
             <p>Status: <span className='font-semibold'>{status}</span></p>
             <p>Applied Tutor: <span className='font-semibold'></span></p>
