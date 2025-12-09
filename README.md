@@ -35,3 +35,4 @@ PACKAGES USED IN THIS PROJECT:
 5. react-hook-form
 6. React-Toastify
 7. SweetAlert2
+8. Tanstack Query

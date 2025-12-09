@@ -53,9 +53,9 @@ const PostNewTution = () => {
           {errors.subject && <p className='text-sm text-red-500'>{errors.subject.message}</p>}
         {/* class */}
           <label className="label">Class <span className='text-red-600 text-2xl'>*</span></label>
-          <input {...register('class',{required:'Class is Required'})} type="text" className="input w-full" placeholder="Class" />
+          <input {...register('studentClass',{required:'Class is Required'})} type="text" className="input w-full" placeholder="Class" />
 
-          {errors.class && <p className='text-sm text-red-500'>{errors.class.message}</p>}
+          {errors.studentClass && <p className='text-sm text-red-500'>{errors.class.message}</p>}
           {/* location */}
           <label className="label">Location <span className='text-red-600 text-2xl'>*</span></label>
           <input  {...register('location',{required:'Location is Required'})} type="text" className="input w-full" placeholder="Location" />
