@@ -12,6 +12,7 @@ import PostNewTution from "../pages/dashboard/Student Dashboard/PostNewTution";
 import AppliedTutors from "../pages/dashboard/Student Dashboard/AppliedTutors";
 import Payments from "../pages/dashboard/Student Dashboard/Payments";
 import ProfileSettings from "../pages/dashboard/Student Dashboard/ProfileSettings";
+import TutionDetails from "../pages/dashboard/Student Dashboard/TutionDetails";
 
 export const router=createBrowserRouter([
     {
@@ -83,6 +84,10 @@ export const router=createBrowserRouter([
             {
                 path:'profile-settings',
                 element:<ProfileSettings></ProfileSettings>
+            },
+            {
+                path:'tutionDetails/:id',
+                element:<TutionDetails></TutionDetails>
             }
         ]
     }

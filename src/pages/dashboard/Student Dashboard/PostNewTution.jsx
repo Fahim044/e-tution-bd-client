@@ -82,7 +82,7 @@ const PostNewTution = () => {
           <input {...register('teachingTime')} type="text" className="input w-full" placeholder="Teaching Time(e.g: 10:00AM-11:30AM)" />
           {/* Student Gender */}
           <label className="label">Student Gender</label>
-          <select {...register('gender')} defaultValue="Student's Gender" className="select w-full">
+          <select {...register('studentGender')} defaultValue="Student's Gender" className="select w-full">
   <option disabled={true}>Student's Gender</option>
   <option>Male</option>
   <option>Female</option>
