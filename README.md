@@ -34,3 +34,4 @@ PACKAGES USED IN THIS PROJECT:
 4. React-Router
 5. react-hook-form
 6. React-Toastify
+7. SweetAlert2
