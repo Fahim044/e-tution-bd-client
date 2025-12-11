@@ -18,6 +18,7 @@ const Register = () => {
         return <Loading></Loading>
     }
     const handleRegister=data=>{
+        
         const userInfo={
             displayName:data.name,
             email:data.email,

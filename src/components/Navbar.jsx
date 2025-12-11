@@ -60,7 +60,7 @@ const Navbar = () => {
           {/* <img
             alt="Profile Photo"
             src={user?.photoURL || userImg} /> */}
-            <img src={user.photoURL?user.photoURL:userImg} alt="" />
+            <img referrerPolicy='no-referrer' src={user.photoURL?user.photoURL:userImg} alt="" />
            
         </div>
       </div>
@@ -68,7 +68,7 @@ const Navbar = () => {
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li><Link to="/dashboard">Dashboard</Link></li>
-        <li><Link className="">Profile</Link></li>
+        <li><Link to="/dashboard/profile-settings" className="">Profile</Link></li>
         <li><Link onClick={handleLogOut} to="/auth/login">Logout</Link></li>
       </ul>
     </div>

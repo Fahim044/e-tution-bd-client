@@ -1,25 +1,25 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
-const Tution = ({tution,tutionInfoRefetch}) => {
+const Tution = ({tution,refetch}) => {
     const {_id,subject,studentClass,location,budget,school,days,teachingTime,studentGender,curriculum,details}=tution;
     const axiosSecure=useAxiosSecure();
     const tutionModalRef=useRef(null);
     const handleModalOpen=()=>{
-        tutionModalRef.current.showModal();
+        tutionModalRef.current?.showModal();
     };
     const {register,handleSubmit,formState:{errors}}=useForm();
-    const handleUpdateTution=updatedTutioninfo=>{
+    const handleUpdateTution=useCallback(updatedTutioninfo=>{
         console.log(updatedTutioninfo);
-        axiosSecure.patch(`/tution/${_id}`,updatedTutioninfo)
+        axiosSecure.patch(`/tutions/${_id}`,updatedTutioninfo)
         .then(res=>{
             if(res.data.modifiedCount)
             {
-                tutionInfoRefetch();
-                tutionModalRef.current.close();
+                refetch();
+                tutionModalRef.current?.close();
                 Swal.fire({
         position: "top-end",
         icon: "success",
@@ -30,6 +30,35 @@ const Tution = ({tution,tutionInfoRefetch}) => {
             }
         })
 
+    },[_id,axiosSecure,refetch])
+
+    // delete tution
+    const handleDeleteTution=id=>{
+        Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    axiosSecure.delete(`/tutions/${id}`)
+    .then(res=>{
+        if(res.data.deletedCount)
+        {
+             Swal.fire({
+      title: "Deleted!",
+      text: "Your Tution has been deleted.",
+      icon: "success"
+    });
+    refetch();
+        }
+    })
+   
+  }
+});
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 border rounded-2xl p-5 gap-5 w-10/12  mx-auto '>
@@ -46,7 +75,7 @@ const Tution = ({tution,tutionInfoRefetch}) => {
             <div className='flex gap-5 flex-col '>
                 <Link to={`/dashboard/tutionDetails/${_id}`} className='btn text-primary1'>View Details</Link>
                 <button onClick={handleModalOpen} className='btn bg-primary1'>Edit</button>
-                <button className='btn btn-warning'>Delete</button>
+                <button onClick={()=>handleDeleteTution(_id)} className='btn btn-warning'>Delete</button>
             </div>
               <dialog ref={tutionModalRef} id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">

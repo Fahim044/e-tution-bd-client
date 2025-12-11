@@ -9,7 +9,7 @@ const TutionDetails = () => {
     const {data:tution=[]}=useQuery({
         queryKey:['myTution',id],
         queryFn:async()=>{
-            const res=await axiosSecure.get(`/tution/${id}`);
+            const res=await axiosSecure.get(`/tutions/${id}`);
             return res.data;
         }
     });

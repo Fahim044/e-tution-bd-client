@@ -7,7 +7,7 @@ import useAuth from '../../../hooks/useAuth';
 const PostNewTution = () => {
     const {user}=useAuth();
     const axiosSecure=useAxiosSecure();
-    const {register,handleSubmit,formState:{errors}}=useForm();
+    const {register,handleSubmit,formState:{errors},reset}=useForm();
     const handlePostTution=tutionInfo=>{
         tutionInfo.studentEmail=user?.email;
         Swal.fire({
@@ -29,6 +29,7 @@ const PostNewTution = () => {
       text: "Your tution has been posted.",
       icon: "success"
     });
+    reset();
         }
     })
 

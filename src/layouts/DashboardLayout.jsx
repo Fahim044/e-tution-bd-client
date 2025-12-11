@@ -1,8 +1,9 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router';
+import { Link, NavLink, Outlet } from 'react-router';
 
 const DashboardLayout = () => {
     const links=<>
+    <li><Link to="/">Home</Link></li>
     <li><NavLink to="/dashboard/my-tutions">My Tutions</NavLink></li>
     <li><NavLink to="/dashboard/post-new-tution">Post New Tution</NavLink></li>
     <li><NavLink to="/dashboard/applied-tutors">Applied Tutors</NavLink></li>

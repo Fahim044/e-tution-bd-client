@@ -7,7 +7,7 @@ import Tution from './Tution';
 const MyTutions = () => {
     const {user}=useAuth();
     const axiosSecure=useAxiosSecure();
-    const {data:tutions=[],refetch:tutionInfoRefetch}=useQuery({
+    const {data:tutions=[],refetch}=useQuery({
         queryKey:['myTutions',user?.email],
         queryFn:async()=>{
             const res=await axiosSecure.get(`/tutions?email=${user.email}`);
@@ -19,7 +19,7 @@ const MyTutions = () => {
            <h2 className='font-bold text-3xl text-center text-primary1 my-5'>My Tutions: {tutions.length}</h2>
            <div className='space-y-3'>
             {
-            tutions.map(tution=><Tution tution={tution} key={tution._id} tutionInfoRefetch={tutionInfoRefetch}></Tution>)
+            tutions.map(tution=><Tution tution={tution} key={tution._id} refetch={refetch}></Tution>)
            }
            </div>
         </div>
