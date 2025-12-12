@@ -30,6 +30,15 @@ const DashboardLayout = () => {
     <li><NavLink to="/dashboard/revenue-history">Revenue History</NavLink></li>
     </>
    }
+   {/* admin only links */}
+   {
+    role==='admin' &&
+    <>
+    <li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
+    <li><NavLink to="/dashboard/manage-tutions">Manage Tutions</NavLink></li>
+    
+    </>
+   }
     <li><NavLink to="/dashboard/profile-settings">Profile Settings</NavLink></li>
     </>
     return (

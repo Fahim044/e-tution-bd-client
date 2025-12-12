@@ -15,6 +15,8 @@ import ProfileSettings from "../pages/dashboard/Student Dashboard/ProfileSetting
 import TutionDetails from "../pages/dashboard/Student Dashboard/TutionDetails";
 import AllTutions from "../pages/All Tutions/AllTutions";
 import PrivateRoute from "./PrivateRoute";
+import ManageTutions from "../pages/dashboard/Admin Dashboard/ManageTutions";
+import ManageUsers from "../pages/dashboard/Admin Dashboard/ManageUsers";
 
 export const router=createBrowserRouter([
     {
@@ -102,6 +104,14 @@ export const router=createBrowserRouter([
             {
                 path:'/dashboard/revenue-history',
                 element:'/dashboard/revenue-history'
+            },
+            {
+                path:"/dashboard/manage-users",
+                element:<ManageUsers/>
+            },
+            {
+                path:"/dashboard/manage-tutions",
+                element:<ManageTutions/>
             }
         ]
     }
