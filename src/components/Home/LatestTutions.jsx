@@ -8,7 +8,7 @@ const LatestTutions = () => {
     const {data:latestTutions=[]}=useQuery({
         queryKey:['latestTutions'],
         queryFn:async()=>{
-            const res=await axiosInstance.get(`/tutions?limit=${6}`);
+            const res=await axiosInstance.get(`/tutions?limit=${6}&status=approved`);
             return res.data;
         }
     });

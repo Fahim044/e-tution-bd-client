@@ -8,7 +8,7 @@ const AllTutions = () => {
     const {data:tutions=[]}=useQuery({
         queryKey:['tutions'],
         queryFn:async()=>{
-            const res=await axiosInstance.get(`/tutions`);
+            const res=await axiosInstance.get(`/tutions?status=approved`);
             return res.data;
         }
     });
