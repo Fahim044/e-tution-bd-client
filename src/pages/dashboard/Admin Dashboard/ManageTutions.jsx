@@ -16,7 +16,7 @@ const ManageTutions = () => {
     return (
         <div className='w-11/12 mx-auto py-4'>
             <h2 className="text-3xl font-bold text-primary1 text-center mb-4">Manage Tutions: {tutions.length}</h2>
-            <div>
+            <div className='space-y-4'>
                {
                 tutions.map(tution=><ManageTutionCard tution={tution} key={tution._id} refetch={refetch}/>)
                }
