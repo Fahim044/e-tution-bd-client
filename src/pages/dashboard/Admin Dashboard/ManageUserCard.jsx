@@ -61,6 +61,45 @@ const ManageUserCard = ({user,refetch}) => {
          }
        }); 
     }
+
+    const handleStatusAdmin=(id)=>{
+        return handleUpdateStatus(id,'admin');
+    }
+    const handleStatusStudent=(id)=>{
+        return handleUpdateStatus(id,'student');
+    }
+    const handleStatusTutor=(id)=>{
+        return handleUpdateStatus(id,'tutor');
+    }
+    const handleUpdateStatus=(id,role)=>{
+        const updatedRole={role};
+        Swal.fire({
+          title: "Are you sure?",
+          text: `Update Role of ${displayName} to ${role.toUpperCase()}?`,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes"
+        }).then((result) => {
+          if (result.isConfirmed) {
+        
+            axiosSecure.patch(`/users/${id}/role`,updatedRole)
+            .then(res=>{
+                if(res.data.modifiedCount)
+                {
+                    refetch();
+                    Swal.fire({
+              title: `User Role Updated !`,
+              text: `${displayName} has been set to${role.toUpperCase()}}.`,
+              icon: "success"
+            });
+                }
+            })
+            
+          }
+        });
+    }
     return (
         <div className='border rounded-2xl p-5 lg:w-2/3 mx-auto'>
             <h3 className='py-2.5 text-center '> <span className={`font-semibold text-2xl `}>{role.toUpperCase()}</span></h3> 
@@ -85,20 +124,20 @@ const ManageUserCard = ({user,refetch}) => {
                     <span>Change Role:</span>
                     {role==='student' &&
                     <>
-                    <span className='btn btn-accent w-full'>Tutor</span>
-                    <span className='btn btn-neutral w-full'>Admin</span>
+                    <span onClick={()=>handleStatusTutor(_id)} className='btn btn-accent w-full'>Tutor</span>
+                    <span onClick={()=>handleStatusAdmin(_id)} className='btn btn-neutral w-full'>Admin</span>
                     </>
                     }
                     {role==='tutor' &&
                     <>
-                    <span className='btn btn-secondary w-full'>Student</span>
-                    <span className='btn btn-neutral w-full'>Admin</span>
+                    <span onClick={()=>handleStatusStudent(_id)} className='btn btn-secondary w-full'>Student</span>
+                    <span onClick={()=>handleStatusAdmin(_id)} className='btn btn-neutral w-full'>Admin</span>
                     </>
                     }
                     {role==='admin' &&
                     <>
-                    <span className='btn btn-secondary w-full'>Student</span>
-                    <span className='btn btn-accent w-full'>Tutor</span>
+                    <span onClick={()=>handleStatusStudent(_id)} className='btn btn-secondary w-full'>Student</span>
+                    <span onClick={()=>handleStatusTutor(_id)} className='btn btn-accent w-full'>Tutor</span>
                     </>
                     }
                     
