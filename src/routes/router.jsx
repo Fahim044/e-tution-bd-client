@@ -13,6 +13,8 @@ import AppliedTutors from "../pages/dashboard/Student Dashboard/AppliedTutors";
 import Payments from "../pages/dashboard/Student Dashboard/Payments";
 import ProfileSettings from "../pages/dashboard/Student Dashboard/ProfileSettings";
 import TutionDetails from "../pages/dashboard/Student Dashboard/TutionDetails";
+import AllTutions from "../pages/All Tutions/AllTutions";
+import PrivateRoute from "./PrivateRoute";
 
 export const router=createBrowserRouter([
     {
@@ -26,7 +28,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:'tutions',
-                element:<p>tutions</p>
+                element:<AllTutions></AllTutions>
             },
             {
                 path:'tutors',
@@ -87,7 +89,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:'tutionDetails/:id',
-                element:<TutionDetails></TutionDetails>
+                element:<PrivateRoute><TutionDetails/></PrivateRoute>
             }
         ]
     }

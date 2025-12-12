@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 import { toast } from 'react-toastify';
 import Loading from '../components/Loading';
 import GoogleLogin from '../components/Social Login/GoogleLogin';
+import Logo from '../components/Logo';
 
 const Login = () => {
     const {logIn,loading,setLoading}=useAuth();
@@ -29,6 +30,7 @@ logIn(data.email,data.password)
     }
     return (
          <div className='min-h-screen grid place-items-center'>
+          <Logo/>
          <div className="card bg-base-100 w-full max-w-sm  shrink-0 shadow-2xl mx-auto  ">
       <h1 className="text-4xl text-center text-primary1 font-bold">Login Your Account</h1>
       <div className="card-body">

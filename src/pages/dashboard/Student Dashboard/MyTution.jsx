@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
-const Tution = ({tution,refetch}) => {
+const MyTution = ({tution,refetch}) => {
     const {_id,subject,studentClass,location,budget,school,days,teachingTime,studentGender,curriculum,details}=tution;
     const axiosSecure=useAxiosSecure();
     const tutionModalRef=useRef(null);
@@ -13,8 +13,9 @@ const Tution = ({tution,refetch}) => {
     };
     const {register,handleSubmit,formState:{errors}}=useForm();
     const handleUpdateTution=useCallback(updatedTutioninfo=>{
-        console.log(updatedTutioninfo);
-        axiosSecure.patch(`/tutions/${_id}`,updatedTutioninfo)
+        // console.log(updatedTutioninfo);
+
+axiosSecure.patch(`/tutions/${_id}`,updatedTutioninfo)
         .then(res=>{
             if(res.data.modifiedCount)
             {
@@ -89,26 +90,26 @@ const Tution = ({tution,refetch}) => {
             {/* subject */}
             
           <label className="label">Subject <span className='text-red-600 text-2xl'>*</span></label>
-          <input defaultValue={subject} {...register('updatedSubject',{required:'Subject is Required'})} type="text" className="input w-full" placeholder="Subject" />
-{errors.updatedSubject && <p className='text-sm text-red-500'>{errors.updatedSubject.message}</p>}
+          <input defaultValue={subject} {...register('subject',{required:'Subject is Required'})} type="text" className="input w-full" placeholder="Subject" />
+{errors.subject && <p className='text-sm text-red-500'>{errors.subject.message}</p>}
         
         {/* class */}
           <label className="label">Class <span className='text-red-600 text-2xl'>*</span></label>
-          <input defaultValue={studentClass} {...register('updatedStudentClass',{required:'Class is Required'})} type="text" className="input w-full" placeholder="Class" />
-{errors.updatedStudentClass && <p className='text-sm text-red-500'>{errors.class.message}</p>}
+          <input defaultValue={studentClass} {...register('studentClass',{required:'Class is Required'})} type="text" className="input w-full" placeholder="Class" />
+{errors.studentClass && <p className='text-sm text-red-500'>{errors.studentClass.message}</p>}
           
           {/* location */}
           <label className="label">Location <span className='text-red-600 text-2xl'>*</span></label>
-          <input defaultValue={location} {...register('updatedLocation',{required:'Location is Required'})} type="text" className="input w-full" placeholder="Location" />
- {errors.updatedLocation && <p className='text-sm text-red-500'>{errors.updatedLocation.message}</p>}
+          <input defaultValue={location} {...register('location',{required:'Location is Required'})} type="text" className="input w-full" placeholder="Location" />
+ {errors.location && <p className='text-sm text-red-500'>{errors.location.message}</p>}
        
           {/* Budget */}
           <label className="label">Budget <span className='text-red-600 text-2xl'>*</span></label>
-          <input defaultValue={budget} {...register('updatedBudget',{required:'Budget is Required'})} type="text" className="input w-full" placeholder="Budget ( in BDT )" />
-           {errors.updatedBudget && <p className='text-sm text-red-500'>{errors.updatedBudget.message}</p>}
+          <input defaultValue={budget} {...register('budget',{required:'Budget is Required'})} type="text" className="input w-full" placeholder="Budget ( in BDT )" />
+           {errors.budget && <p className='text-sm text-red-500'>{errors.budget.message}</p>}
           {/* Student's School */}
           <label className="label">Student's School</label>
-          <input defaultValue={school} {...register('updatedSchool')} type="text" className="input w-full" placeholder="Student's School" />
+          <input defaultValue={school} {...register('school')} type="text" className="input w-full" placeholder="Student's School" />
           </fieldset>
 </div>
 
@@ -117,7 +118,7 @@ const Tution = ({tution,refetch}) => {
             <fieldset className="fieldset">
             {/* Days/week */}
           <label className="label">Days/week</label>
-          <input defaultValue={days} {...register('updatedDays',
+          <input defaultValue={days} {...register('days',
             {validate:(value)=>{
                 const num=Number(value);
 if(isNaN(num))  return "Days Must Be A Number";
@@ -125,14 +126,14 @@ if(isNaN(num))  return "Days Must Be A Number";
                 return num<=7 || "Days cannot be greater than 7";
             }})} type="text" className="input w-full" placeholder="Days/week" />
 
-{errors.updatedDays && <p className='text-sm text-red-500'>{errors.updatedDays.message}</p>}
+{errors.days && <p className='text-sm text-red-500'>{errors.days.message}</p>}
 
           {/* Teaching Time */}
           <label className="label">Teaching Time</label>
-          <input defaultValue={teachingTime} {...register('updatedTeachingTime')} type="text" className="input w-full" placeholder="Teaching Time(e.g: 10:00AM-11:30AM)" />
+          <input defaultValue={teachingTime} {...register('teachingTime')} type="text" className="input w-full" placeholder="Teaching Time(e.g: 10:00AM-11:30AM)" />
           {/* Student Gender */}
           <label className="label">Student Gender</label>
-          <select defaultValue={studentGender} {...register('updatedStudentGender')}  className="select w-full">
+          <select defaultValue={studentGender} {...register('studentGender')}  className="select w-full">
   <option disabled={true}>Student's Gender</option>
   <option>Male</option>
   <option>Female</option>
@@ -140,7 +141,7 @@ if(isNaN(num))  return "Days Must Be A Number";
 </select>
           {/* Student Curriculum */}
           <label className="label">Student Curriculum</label>
-          <select defaultValue={curriculum} {...register('updatedCurriculum')}  className="select w-full">
+          <select defaultValue={curriculum} {...register('curriculum')}  className="select w-full">
   <option disabled={true}>Select Curriculum</option>
   <option>Bangla Version</option>
   <option>English Version</option>
@@ -148,7 +149,7 @@ if(isNaN(num))  return "Days Must Be A Number";
 </select>
           {/* Details */}
           <label className="label">Details </label>
-          <textarea defaultValue={details} {...register('updatedDetails')} className='textarea textarea-bordered w-full' rows={"5"} placeholder='Details About Your Requirements...'></textarea>
+          <textarea defaultValue={details} {...register('details')} className='textarea textarea-bordered w-full' rows={"5"} placeholder='Details About Your Requirements...'></textarea>
 
         </fieldset>
           </div>
@@ -168,4 +169,4 @@ if(isNaN(num))  return "Days Must Be A Number";
     );
 };
 
-export default Tution;
+export default MyTution;

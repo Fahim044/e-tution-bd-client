@@ -32,9 +32,10 @@ const GoogleLogin = () => {
             })
             .catch(error=>{
                 toast.error(error.code);
+                setLoading(false);
             })
-            .finally(()=>setLoading(false))
-        })
+            
+        }).finally(()=>setLoading(false))
     }
     return (
         <div className='flex flex-col justify-center items-center space-y-2'>

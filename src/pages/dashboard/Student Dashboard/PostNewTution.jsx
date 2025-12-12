@@ -91,13 +91,16 @@ if(isNaN(num))  return "Days Must Be A Number";
           <label className="label">Teaching Time</label>
           <input {...register('teachingTime')} type="text" className="input w-full" placeholder="Teaching Time(e.g: 10:00AM-11:30AM)" />
           {/* Student Gender */}
-          <label className="label">Student Gender</label>
-          <select {...register('studentGender')} defaultValue="Student's Gender" className="select w-full">
-  <option disabled={true}>Student's Gender</option>
+          <label className="label">Student Gender<span className='text-red-600 text-2xl'>*</span></label>
+          <select {...register('studentGender',{required:'Please Select Gender'})} defaultValue="" className="select w-full">
+  <option disabled={true} value={""} hidden>Select Gender</option>
   <option>Male</option>
   <option>Female</option>
   
 </select>
+{
+    errors.studentGender && <p className='text-sm text-red-500'>{errors.studentGender.message}</p>
+}
           {/* Student Curriculum */}
           <label className="label">Student Curriculum</label>
           <select {...register('curriculum')} defaultValue="Select Curriculum" className="select w-full">

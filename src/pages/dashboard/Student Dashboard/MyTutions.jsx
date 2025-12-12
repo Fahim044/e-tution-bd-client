@@ -2,7 +2,7 @@ import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import Tution from './Tution';
+import MyTution from './MyTution';
 
 const MyTutions = () => {
     const {user}=useAuth();
@@ -19,7 +19,7 @@ const MyTutions = () => {
            <h2 className='font-bold text-3xl text-center text-primary1 my-5'>My Tutions: {tutions.length}</h2>
            <div className='space-y-3'>
             {
-            tutions.map(tution=><Tution tution={tution} key={tution._id} refetch={refetch}></Tution>)
+            tutions.map(tution=><MyTution tution={tution} key={tution._id} refetch={refetch}></MyTution>)
            }
            </div>
         </div>
