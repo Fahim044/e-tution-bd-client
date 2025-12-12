@@ -90,6 +90,18 @@ export const router=createBrowserRouter([
             {
                 path:'tutionDetails/:id',
                 element:<PrivateRoute><TutionDetails/></PrivateRoute>
+            },
+            {
+                path:'/dashboard/my-applications',
+                element:<p>My Applications</p>
+            },
+            {
+                path:'/dashboard/tutor-ongoing-tutions',
+                element:'/dashboard/tutor-ongoing-tutions'
+            },
+            {
+                path:'/dashboard/revenue-history',
+                element:'/dashboard/revenue-history'
             }
         ]
     }

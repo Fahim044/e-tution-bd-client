@@ -1,13 +1,35 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
+import useRole from '../hooks/useRole';
+import Loading from '../components/Loading';
 
 const DashboardLayout = () => {
+  const {role,roleLoading}=useRole();
+  if(roleLoading)
+  {
+    return <Loading/>
+  }
     const links=<>
     <li><Link to="/">Home</Link></li>
-    <li><NavLink to="/dashboard/my-tutions">My Tutions</NavLink></li>
+    {/* student only links */}
+   {
+    role==='student' &&
+    <>
+     <li><NavLink to="/dashboard/my-tutions">My Tutions</NavLink></li>
     <li><NavLink to="/dashboard/post-new-tution">Post New Tution</NavLink></li>
     <li><NavLink to="/dashboard/applied-tutors">Applied Tutors</NavLink></li>
     <li><NavLink to="/dashboard/payments">Payments</NavLink></li>
+    </>
+   }
+   {/* tutor only links */}
+   {
+    role==='tutor' &&
+    <>
+     <li><NavLink to="/dashboard/my-applications">My Applications</NavLink></li>
+    <li><NavLink to="/dashboard/tutor-ongoing-tutions">Tutor Ongoing Tutions</NavLink></li>
+    <li><NavLink to="/dashboard/revenue-history">Revenue History</NavLink></li>
+    </>
+   }
     <li><NavLink to="/dashboard/profile-settings">Profile Settings</NavLink></li>
     </>
     return (
@@ -33,7 +55,7 @@ const DashboardLayout = () => {
           </svg>
         </label>
       </div>
-      <div className="mx-2 flex-1 px-2 font-bold text-4xl text-primary1">Your Dashboard</div>
+      <div className="mx-2 flex-1 px-2 font-bold text-4xl text-primary1">Your Dashboard({role.toUpperCase()})</div>
       <div className="hidden flex-none lg:block">
         <ul className="menu menu-horizontal">
           {/* Navbar menu content here */}
