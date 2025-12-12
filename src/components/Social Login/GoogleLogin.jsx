@@ -21,7 +21,7 @@ const GoogleLogin = () => {
             const userInfo={
                 displayName:result.user.displayName,
                 email:result.user.email,
-                role:'Student'
+                role:'student'
             };
             setUser(result.user);
             axiosSecure.post('/users',userInfo)

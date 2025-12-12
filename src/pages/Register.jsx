@@ -22,8 +22,8 @@ const Register = () => {
         const userInfo={
             displayName:data.name,
             email:data.email,
-            role:data.role,
-            phone:data.phone
+            role:(data.role).toLowerCase(),
+            phoneNumber:data.phoneNumber
         };
         createAccount(data.email,data.password)
         .then(result=>{
@@ -106,8 +106,8 @@ const Register = () => {
         }
         {/* role selection */}
         <label className="label">Register As</label>
-        <select {...register('role',{required:true})} defaultValue="Pick Your Role" className="select ">
-  <option disabled={true}>Register As</option>
+        <select {...register('role',{required:true})} defaultValue="" className="select ">
+  <option disabled={true} value={""} hidden>Pick Your Role</option>
   <option>Student</option>
   <option>Tutor</option>
 
@@ -119,7 +119,7 @@ const Register = () => {
 
  {/* phone */}
           <label className="label">Phone</label>
-          <input {...register('phone',{required:'Phone Number Is Required.',
+          <input {...register('phoneNumber',{required:'Phone Number Is Required.',
             pattern:{
                 value:/^(?:\+?88)?01[3-9]\d{8}$/,
                 message:'Please Enter A Valid Bangladeshi Phone Number'
@@ -127,8 +127,8 @@ const Register = () => {
           )} type="tel" inputMode='tel' className="input" placeholder="Your Phone Number" />
           {/* <div><a className="link link-hover">Forgot password?</a></div> */}
           {
-            errors.phone &&
-            <p className='text-red-600 text-sm'>{errors.phone.message}</p>
+            errors.phoneNumber &&
+            <p className='text-red-600 text-sm'>{errors.phoneNumber.message}</p>
           }
           <button className="btn bg-primary1 mt-4">Create Account</button>
 
