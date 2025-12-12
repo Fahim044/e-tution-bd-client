@@ -12,20 +12,24 @@ const ManageTutionCard = ({tution,refetch}) => {
     
     const axiosSecure=useAxiosSecure();
 
-const handleApproveTution=id=>{
-
-    const updatedStatus={
-        status:'approved'
+    const handleApproveTution=id=>{
+        return handleTutionStatus(id,'approved');
     }
+    const handleRejectTution=id=>{
+        return handleTutionStatus(id,'rejected');
+    }
+const handleTutionStatus=(id,status)=>{
+
+    const updatedStatus={status};
 
     Swal.fire({
   title: "Are you sure?",
-  text: "Approve This Tution?",
+  text: `Update Status of This Tution to ${status}?`,
   icon: "warning",
   showCancelButton: true,
   confirmButtonColor: "#3085d6",
   cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, Approve Tution"
+  confirmButtonText: "Yes"
 }).then((result) => {
   if (result.isConfirmed) {
 
@@ -35,8 +39,8 @@ const handleApproveTution=id=>{
         {
             refetch();
             Swal.fire({
-      title: "Tution Approved!",
-      text: "This Tution has been Approved.",
+      title: `Tution ${status}!`,
+      text: `This Tution has been ${status}.`,
       icon: "success"
     });
         }
@@ -62,13 +66,19 @@ const handleApproveTution=id=>{
             {/* right side actions */}
             <div className='flex flex-col'>
                 <button onClick={handleModalOpen} className='btn text-primary1 w-full'>View Details</button>
+
                 {status==='approved'?<p className='text-success text-center btn'>Approved</p>
             :
                     <button  onClick={()=>handleApproveTution(_id)} className='btn bg-primary1'>Approve</button>
             }
             {/* disabled={status==='approved'} */}
                 
-                <button className='btn text-primary1'>Reject</button>
+            {status==='rejected'?<p className='text-red-500 text-center btn'>Rejected</p>
+        :
+                <button onClick={()=>handleRejectTution(_id)} className='btn text-primary1'>Reject</button>
+        }
+
+                
             </div>
          <dialog ref={viewTutionModalRef} id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">
