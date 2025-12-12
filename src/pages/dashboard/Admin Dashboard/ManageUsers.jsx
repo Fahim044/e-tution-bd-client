@@ -5,7 +5,7 @@ import ManageUserCard from './ManageUserCard';
 
 const ManageUsers = () => {
     const axiosSecure=useAxiosSecure();
-    const {data:users=[]}=useQuery({
+    const {data:users=[],refetch}=useQuery({
         queryKey:['users'],
         queryFn:async()=>{
             const res=await axiosSecure.get('/users');
@@ -19,7 +19,7 @@ const ManageUsers = () => {
     <div className='space-y-4'>
     
             {
-                users.map(user=><ManageUserCard key={user._id} user={user}></ManageUserCard>)
+                users.map(user=><ManageUserCard key={user._id} user={user} refetch={refetch}></ManageUserCard>)
             }
     </div>
         </div>
