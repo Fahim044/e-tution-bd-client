@@ -26,12 +26,40 @@ const ManageUserCard = ({user,refetch}) => {
                    Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `Tution Post Updated`,
+                        title: `${displayName}'s Info Updated`,
                         showConfirmButton: false,
                         timer: 2000
                          });
             }
         })
+    }
+
+    const handleDeleteAccount=id=>{
+        Swal.fire({
+         title: "Are you sure?",
+         text: "You won't be able to revert this!",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Yes, delete it!"
+       }).then((result) => {
+         if (result.isConfirmed) {
+           axiosSecure.delete(`/users/${id}`)
+           .then(res=>{
+               if(res.data.deletedCount)
+               {
+                    Swal.fire({
+             title: "Deleted!",
+             text: `${displayName}'s Account  has been Deleted.`,
+             icon: "success"
+           });
+           refetch();
+               }
+           })
+          
+         }
+       }); 
     }
     return (
         <div className='border rounded-2xl p-5 lg:w-2/3 mx-auto'>
@@ -48,13 +76,11 @@ const ManageUserCard = ({user,refetch}) => {
        </div>
 
             {/* right side actions */}
-            <div className='flex flex-col'>
+            <div className='flex flex-col gap-2'>
                 <button onClick={handleModalOpen}  className='btn text-primary1 w-full'>View Details</button>
-
-               
                     <button onClick={handleEditModalOpen}  className='btn bg-primary1'>Edit Info</button>
             
-                <button  className='btn text-primary1'>Delete Account</button>
+                <button onClick={()=>handleDeleteAccount(_id)} className='btn btn-warning'>Delete Account</button>
                 <div  className='border rounded-xl p-2 grid md:grid-cols-3 grid-cols-1 place-items-center gap-2'>
                     <span>Change Role:</span>
                     {role==='student' &&
