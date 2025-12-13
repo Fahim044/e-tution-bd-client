@@ -64,7 +64,10 @@ const PostNewTution = () => {
         {errors.location && <p className='text-sm text-red-500'>{errors.location.message}</p>}
           {/* Budget */}
           <label className="label">Budget <span className='text-red-600 text-2xl'>*</span></label>
-          <input {...register('budget',{required:'Budget is Required'})} type="text" className="input w-full" placeholder="Budget ( in BDT )" />
+          <input {...register('budget',{required:'Budget is Required',valueAsNumber:true,min:{
+            value:1,
+            message:'Budget must be greater than 0'
+          }})} type="number" className="input w-full" placeholder="Budget ( in BDT )" />
           {errors.budget && <p className='text-sm text-red-500'>{errors.budget.message}</p>}
           {/* Student's School */}
           <label className="label">Student's School</label>

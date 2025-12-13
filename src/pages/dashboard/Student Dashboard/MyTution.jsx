@@ -105,7 +105,10 @@ axiosSecure.patch(`/tutions/${_id}`,updatedTutioninfo)
        
           {/* Budget */}
           <label className="label">Budget <span className='text-red-600 text-2xl'>*</span></label>
-          <input defaultValue={budget} {...register('budget',{required:'Budget is Required'})} type="text" className="input w-full" placeholder="Budget ( in BDT )" />
+          <input defaultValue={budget} {...register('budget',{required:'Budget is Required',valueAsNumber:true,min:{
+            value:1,
+            message:'Budget must be greater than 0'
+          }})} type="number" className="input w-full" placeholder="Budget ( in BDT )" />
            {errors.budget && <p className='text-sm text-red-500'>{errors.budget.message}</p>}
           {/* Student's School */}
           <label className="label">Student's School</label>
@@ -119,12 +122,24 @@ axiosSecure.patch(`/tutions/${_id}`,updatedTutioninfo)
             {/* Days/week */}
           <label className="label">Days/week</label>
           <input defaultValue={days} {...register('days',
-            {validate:(value)=>{
+            {valueAsNumber:true,
+              min:{
+              value:1,
+              message:'Days must be greater than 0'
+            },
+            max:{
+              value:7,
+              message:'Days cannot be greater than 7'
+            }
+            })} type="number" className="input w-full" placeholder="Days/week" />
+            {/* 
+            validate:(value)=>{
                 const num=Number(value);
 if(isNaN(num))  return "Days Must Be A Number";
                 
                 return num<=7 || "Days cannot be greater than 7";
-            }})} type="text" className="input w-full" placeholder="Days/week" />
+            }
+            */}
 
 {errors.days && <p className='text-sm text-red-500'>{errors.days.message}</p>}
 
