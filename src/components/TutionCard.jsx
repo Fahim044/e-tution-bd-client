@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
+import useRole from '../hooks/useRole';
 
 const TutionCard = ({tution}) => {
     // console.log(tution);
+    const {role}=useRole();
     const {_id,subject,studentClass,studentGender,location,budget}=tution;
     return (
         <div className='border rounded-2xl p-5 space-y-3'>
@@ -13,7 +15,13 @@ const TutionCard = ({tution}) => {
             <p>Location: <span className='font-semibold text-lg'>{location}</span></p>
             <p>Budget: <span className='font-semibold text-lg'>{budget}</span></p>
             </div>
-            <Link to={`/dashboard/tutionDetails/${_id}`} className='btn bg-primary1 w-full'>View Details & Apply</Link>
+            {
+                role==='tutor' ?
+                 <Link to={`/dashboard/tutionDetails/${_id}`} className='btn bg-primary1 w-full'>View Details & Apply</Link>
+                 :
+                  <Link to={`/dashboard/tutionDetails/${_id}`} className='btn bg-primary1 w-full'>View Details</Link>
+            }
+           
         </div>
     );
 };

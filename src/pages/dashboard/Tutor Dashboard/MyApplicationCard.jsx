@@ -69,7 +69,7 @@ const MyApplicationCard = ({app,queryClient,user,refetch}) => {
     }
     return (
         <div className='border rounded-2xl p-5 w-11/12 lg:w-2/3 mx-auto '>
-            <h3 className="text-center ">Status: <span className='font-semibold text-xl'>{status.toUpperCase()}</span></h3>
+            <h3 className="text-center ">Status: <span className={`font-semibold text-xl ${status==='approved' && 'text-success'} ${status==='rejected' && 'text-red-600'}`}>{status.toUpperCase()}</span></h3>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3.5 '>
                 <div>
                     <p>Tution ID: <span className='font-semibold text-lg'>{tutionId}</span></p>

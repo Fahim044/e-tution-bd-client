@@ -18,6 +18,7 @@ import PrivateRoute from "./PrivateRoute";
 import ManageTutions from "../pages/dashboard/Admin Dashboard/ManageTutions";
 import ManageUsers from "../pages/dashboard/Admin Dashboard/ManageUsers";
 import MyApplications from "../pages/dashboard/Tutor Dashboard/MyApplications";
+import OngoingTutions from "../pages/dashboard/Tutor Dashboard/OngoingTutions";
 
 export const router=createBrowserRouter([
     {
@@ -99,8 +100,8 @@ export const router=createBrowserRouter([
                 element:<MyApplications/>
             },
             {
-                path:'/dashboard/tutor-ongoing-tutions',
-                element:'/dashboard/tutor-ongoing-tutions'
+                path:'/dashboard/ongoing-tutions',
+                element:<OngoingTutions></OngoingTutions>
             },
             {
                 path:'/dashboard/revenue-history',

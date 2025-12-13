@@ -24,7 +24,7 @@ const handleTutionStatus=(id,status)=>{
 
     Swal.fire({
   title: "Are you sure?",
-  text: `Update Status of This Tution to ${status}?`,
+  text: `Update Status of This Tution to ${status.toUpperCase()}?`,
   icon: "warning",
   showCancelButton: true,
   confirmButtonColor: "#3085d6",
@@ -39,8 +39,8 @@ const handleTutionStatus=(id,status)=>{
         {
             refetch();
             Swal.fire({
-      title: `Tution ${status}!`,
-      text: `This Tution has been ${status}.`,
+      title: `Tution ${status.toUpperCase()}!`,
+      text: `This Tution has been ${status.toUpperCase()}.`,
       icon: "success"
     });
         }

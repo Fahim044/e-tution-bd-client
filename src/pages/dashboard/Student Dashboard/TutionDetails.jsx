@@ -23,7 +23,7 @@ const TutionDetails = () => {
             return res.data;
         }
     });
-     const {subject,studentClass,location,budget,school,days,teachingTime,studentGender,curriculum,details,createdAt,status}=tution;
+     const {subject,studentClass,location,budget,school,days,teachingTime,studentGender,curriculum,details,createdAt,status,studentEmail}=tution;
 
     const {register,handleSubmit,formState:{errors}}=useForm();
    
@@ -38,6 +38,12 @@ const TutionDetails = () => {
         tutorRequest.studentClass=studentClass;
         tutorRequest.teachingTime=teachingTime;
         tutorRequest.days=days;
+        tutorRequest.studentGender=studentGender;
+        tutorRequest.curriculum=curriculum;
+        if(role==='tutor')
+        {
+            tutorRequest.photoURL=user?.photoURL;
+        }
         
         axiosSecure.post('/tutor-requests',tutorRequest)
         .then(res=>{
@@ -98,7 +104,14 @@ const tutorAlreadyApplied= tutorRequests.some(req=>req.tutorEmail===user?.email)
             <div className='space-y-2'><p>Applied Tutor:</p> 
                 <p className='font-semibold space-y-2'>
 
-                {tutorRequests.map((req,i)=><p className='border rounded-xl text-center'>{i+1}. {req.displayName}</p> )}
+                {tutorRequests.map((req,i)=><div className='border rounded-xl text-center'>
+                    <p >{i+1}. {req.displayName}</p>
+                    {/* {
+                        user.email===studentEmail &&
+
+                    } */}
+
+                </div> )}
                 
                 </p>
                 </div>

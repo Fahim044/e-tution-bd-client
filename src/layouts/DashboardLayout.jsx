@@ -26,7 +26,7 @@ const DashboardLayout = () => {
     role==='tutor' &&
     <>
      <li><NavLink to="/dashboard/my-applications">My Applications</NavLink></li>
-    <li><NavLink to="/dashboard/tutor-ongoing-tutions">Tutor Ongoing Tutions</NavLink></li>
+    <li><NavLink to="/dashboard/ongoing-tutions">Ongoing Tutions</NavLink></li>
     <li><NavLink to="/dashboard/revenue-history">Revenue History</NavLink></li>
     </>
    }
