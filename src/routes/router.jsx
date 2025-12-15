@@ -19,6 +19,9 @@ import ManageTutions from "../pages/dashboard/Admin Dashboard/ManageTutions";
 import ManageUsers from "../pages/dashboard/Admin Dashboard/ManageUsers";
 import MyApplications from "../pages/dashboard/Tutor Dashboard/MyApplications";
 import OngoingTutions from "../pages/dashboard/Tutor Dashboard/OngoingTutions";
+import TutorRoute from "./TutorRoute";
+import AdminRoute from "./AdminRoute";
+import StudentRoute from "./StudentRoute";
 
 export const router=createBrowserRouter([
     {
@@ -73,47 +76,67 @@ export const router=createBrowserRouter([
             },
             {
                 path:'my-tutions',
-                element:<MyTutions></MyTutions>
+                element:<StudentRoute>
+                    <MyTutions></MyTutions>
+                </StudentRoute>
             },
             {
                 path:'post-new-tution',
-                element:<PostNewTution></PostNewTution>
+                element:<StudentRoute>
+                    <PostNewTution></PostNewTution>
+                </StudentRoute>
             },
             {
                 path:'applied-tutors',
-                element:<AppliedTutors></AppliedTutors>
+                element:<StudentRoute>
+                    <AppliedTutors></AppliedTutors>
+                </StudentRoute>
             },
             {
                 path:'payments',
-                element:<Payments></Payments>
+                element:<StudentRoute>
+                    <Payments></Payments>
+                </StudentRoute>
             },
             {
                 path:'profile-settings',
-                element:<ProfileSettings></ProfileSettings>
+                element:<PrivateRoute>
+                    <ProfileSettings></ProfileSettings>
+                    </PrivateRoute>
             },
             {
                 path:'tutionDetails/:id',
-                element:<PrivateRoute><TutionDetails/></PrivateRoute>
+                element:<PrivateRoute>
+                    <TutionDetails/>
+                    </PrivateRoute>
             },
             {
-                path:'/dashboard/my-applications',
-                element:<MyApplications/>
+                path:'my-applications',
+                element:<TutorRoute>
+                    <MyApplications/>
+                </TutorRoute>
             },
             {
-                path:'/dashboard/ongoing-tutions',
-                element:<OngoingTutions></OngoingTutions>
+                path:'ongoing-tutions',
+                element:<TutorRoute>
+                    <OngoingTutions></OngoingTutions>
+                </TutorRoute>
             },
             {
-                path:'/dashboard/revenue-history',
+                path:'revenue-history',
                 element:'/dashboard/revenue-history'
             },
             {
-                path:"/dashboard/manage-users",
-                element:<ManageUsers/>
+                path:"manage-users",
+                element:<AdminRoute>
+                    <ManageUsers/>
+                </AdminRoute>
             },
             {
-                path:"/dashboard/manage-tutions",
-                element:<ManageTutions/>
+                path:"manage-tutions",
+                element:<AdminRoute>
+                    <ManageTutions/>
+                </AdminRoute>
             }
         ]
     }

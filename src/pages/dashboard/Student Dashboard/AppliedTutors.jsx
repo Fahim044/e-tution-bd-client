@@ -10,7 +10,8 @@ const AppliedTutors = () => {
     const axiosSecure=useAxiosSecure();
     const queryClient=useQueryClient();
     const {data:appliedTutors,isLoading:appliedTutorsLoading}=useQuery({
-        queryKey:['tutorRequests',user.email],
+        queryKey:['tutorRequests',user?.email],
+        enabled:!!user?.email,
         queryFn:async()=>{
             const res=await axiosSecure.get(`/tutor-requests?studentEmail=${user?.email}`);
             return res.data;

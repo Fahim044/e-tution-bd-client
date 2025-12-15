@@ -2,16 +2,21 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import ManageTutionCard from './ManageTutionCard';
+import Loading from '../../../components/Loading';
 
 const ManageTutions = () => {
     const axiosSecure=useAxiosSecure();
-    const {data:tutions=[],refetch}=useQuery({
+    const {data:tutions=[],refetch,isLoading:manageTutionsLoading}=useQuery({
         queryKey:['tutions','pending'],
         queryFn:async()=>{
             const res=await axiosSecure.get('/tutions');
             return res.data;
         }
     });
+    if(manageTutionsLoading)
+    {
+        return <Loading/>
+    }
     // console.log(tutions);
     return (
         <div className='w-11/12 mx-auto py-4'>

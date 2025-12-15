@@ -2,16 +2,21 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxios from '../../hooks/useAxios';
 import TutionCard from '../TutionCard';
+import Loading from '../Loading';
 
 const LatestTutions = () => {
     const axiosInstance=useAxios();
-    const {data:latestTutions=[]}=useQuery({
+    const {data:latestTutions=[],isLoading:latestTutionsLoading}=useQuery({
         queryKey:['latestTutions'],
         queryFn:async()=>{
             const res=await axiosInstance.get(`/tutions?limit=${6}&status=approved`);
             return res.data;
         }
     });
+    if(latestTutionsLoading)
+    {
+        return <Loading/>
+    }
     
     return (
         <div className='w-11/12 mx-auto '>

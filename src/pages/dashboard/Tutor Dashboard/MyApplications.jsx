@@ -10,9 +10,10 @@ const MyApplications = () => {
     const axiosSecure=useAxiosSecure();
     const queryClient=useQueryClient();
     const {data:myApps=[],isLoading:myAppsLoading,refetch}=useQuery({
-        queryKey:['tutorRequests',user.email],
+        queryKey:['tutorRequests',user?.email],
+        enabled:!!user?.email,
         queryFn:async()=>{
-            const res=await axiosSecure.get(`/tutor-requests?tutorEmail=${user?.email}`);
+            const res=await axiosSecure.get(`/tutor-requests?tutorEmail=${user.email}`);
             return res.data;
         }
     });
