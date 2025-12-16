@@ -12,7 +12,7 @@ const OngoingTutions = () => {
         queryKey:['ongoingTutions',user?.email],
         enabled: !!user?.email,
         queryFn:async()=>{
-            const res=await axiosSecure.get(`/tutor-requests?tutorEmail=${user.email}&status=approved`);
+            const res=await axiosSecure.get(`/tutor-requests?status=approved`);//tutorEmail=${user.email}&
             return res.data;
         }
     });

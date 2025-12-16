@@ -13,7 +13,7 @@ const MyApplications = () => {
         queryKey:['tutorRequests',user?.email],
         enabled:!!user?.email,
         queryFn:async()=>{
-            const res=await axiosSecure.get(`/tutor-requests?tutorEmail=${user.email}`);
+            const res=await axiosSecure.get(`/tutor-requests`);//?tutorEmail=${user.email}
             return res.data;
         }
     });

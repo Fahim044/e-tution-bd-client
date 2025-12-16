@@ -22,6 +22,8 @@ import OngoingTutions from "../pages/dashboard/Tutor Dashboard/OngoingTutions";
 import TutorRoute from "./TutorRoute";
 import AdminRoute from "./AdminRoute";
 import StudentRoute from "./StudentRoute";
+import AllTutors from "../pages/All Tutors/AllTutors";
+import TutorDetails from "../pages/All Tutors/TutorDetails";
 
 export const router=createBrowserRouter([
     {
@@ -39,7 +41,13 @@ export const router=createBrowserRouter([
             },
             {
                 path:'tutors',
-                element:<p>tutors</p>
+                element:<AllTutors/>
+            },
+            {
+                path:'tutorDetails/:id',
+                element:<PrivateRoute>
+                    <TutorDetails/>
+                </PrivateRoute>
             },
             {
                 path:'about',
@@ -110,6 +118,7 @@ export const router=createBrowserRouter([
                     <TutionDetails/>
                     </PrivateRoute>
             },
+            
             {
                 path:'my-applications',
                 element:<TutorRoute>

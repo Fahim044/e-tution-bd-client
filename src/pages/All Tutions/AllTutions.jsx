@@ -22,7 +22,7 @@ const AllTutions = () => {
     const {data:tutions=[],isLoading:allTutionsLoading,isFetching}=useQuery({
         queryKey:['tutions',searchText,sort,order,currentPage],
         queryFn:async()=>{
-            const res=await axiosInstance.get(`/tutions?status=approved&searchText=${searchText}&sort=${sort}&order=${order}&limit=${limit}&skip=${currentPage*limit}`);
+            const res=await axiosInstance.get(`/public/tutions?status=approved&searchText=${searchText}&sort=${sort}&order=${order}&limit=${limit}&skip=${currentPage*limit}`);
             setTotalTutions(res.data.total);
             const pages=Math.ceil(res.data.total/limit);
             setTotalPages(pages);
@@ -83,7 +83,7 @@ const AllTutions = () => {
                 )
             }
             {
-            [...Array(totalPages).keys()].map(i=><button onClick={()=>setCurrentPage(i)}  className={`btn ${i===currentPage && 'btn-primary'}`}>{i+1}</button>)
+            [...Array(totalPages).keys()].map(i=><button key={i} onClick={()=>setCurrentPage(i)}  className={`btn ${i===currentPage && 'btn-primary'}`}>{i+1}</button>)
            }
 
            {

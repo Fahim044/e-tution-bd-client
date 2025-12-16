@@ -9,7 +9,7 @@ const LatestTutions = () => {
     const {data:latestTutions=[],isLoading:latestTutionsLoading}=useQuery({
         queryKey:['latestTutions'],
         queryFn:async()=>{
-            const res=await axiosInstance.get(`/tutions?limit=${6}&status=approved`);
+            const res=await axiosInstance.get(`/public/tutions?limit=${6}&status=approved`);
             return res.data.tutions;
         }
     });

@@ -10,7 +10,7 @@ const ManageTutions = () => {
         queryKey:['tutions','pending'],
         queryFn:async()=>{
             const res=await axiosSecure.get('/tutions');
-            return res.data.tutions;
+            return res.data;
         }
     });
     if(manageTutionsLoading)
