@@ -13,7 +13,7 @@ const MyTutions = () => {
         enabled:!!user?.email,
         queryFn:async()=>{
             const res=await axiosSecure.get(`/tutions?email=${user.email}`);
-            return res.data;
+            return res.data.tutions;
         }
     });
 

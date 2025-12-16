@@ -12,7 +12,7 @@ const PostNewTution = () => {
         tutionInfo.studentEmail=user?.email;
         Swal.fire({
   title: "Are you sure to post this Tution?",
-  text: "You won't be able to revert this!",
+  text: "",
   icon: "warning",
   showCancelButton: true,
   confirmButtonColor: "#3085d6",

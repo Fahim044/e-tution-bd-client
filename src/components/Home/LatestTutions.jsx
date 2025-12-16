@@ -10,7 +10,7 @@ const LatestTutions = () => {
         queryKey:['latestTutions'],
         queryFn:async()=>{
             const res=await axiosInstance.get(`/tutions?limit=${6}&status=approved`);
-            return res.data;
+            return res.data.tutions;
         }
     });
     if(latestTutionsLoading)

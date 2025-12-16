@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = ({setSearchText}) => {
+const Search = ({searchText,setSearchText}) => {
     return (
        <div className='my-5 mx-auto flex md:justify-center'>
         <label className="input">
@@ -16,7 +16,7 @@ const Search = ({setSearchText}) => {
       <path d="m21 21-4.3-4.3"></path>
     </g>
   </svg>
-  <input onChange={(e)=>setSearchText(e.target.value)} type="search" required placeholder="Search Tutions by Subject or Location" />
+  <input value={searchText} onChange={(e)=>setSearchText(e.target.value)} type="search" required placeholder="Search Tutions by Subject or Location" />
 </label>
        </div>
     );
