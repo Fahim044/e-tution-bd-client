@@ -6,6 +6,7 @@ import Loading from '../components/Loading';
 import { toast } from 'react-toastify';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import GoogleLogin from '../components/Social Login/GoogleLogin';
+import axios from 'axios';
 
 const Register = () => {
     const {createAccount,updateUserProfile,setUser,setLoading,loading}=useAuth();
@@ -29,7 +30,7 @@ const Register = () => {
         .then(result=>{
             console.log(result.user);
             const user=result.user;
-            axiosSecure.post('/users',userInfo)
+            axios.post('https://e-tution-bd-server-sepia.vercel.app/users',userInfo)
             .then((res)=>{
                 if(res.data.insertedId)
                 {

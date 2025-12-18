@@ -11,9 +11,9 @@ const AppliedTutors = () => {
     const queryClient=useQueryClient();
     const {data:appliedTutors,isLoading:appliedTutorsLoading}=useQuery({
         queryKey:['tutorRequests',user?.email],
-        enabled:!!user?.email,
+        enabled:!!user?.email && !loading,
         queryFn:async()=>{
-            const res=await axiosSecure.get(`/tutor-requests`);//?studentEmail=${user?.email}
+            const res=await axiosSecure.get(`/tutor-requests`);
             return res.data;
         }
     });
