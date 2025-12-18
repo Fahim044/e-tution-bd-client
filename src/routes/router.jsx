@@ -27,6 +27,7 @@ import TutorDetails from "../pages/All Tutors/TutorDetails";
 import PaymentSuccess from "../pages/Payments/PaymentSuccess";
 import PaymentCancelled from "../pages/Payments/PaymentCancelled";
 import RevenueHistory from "../pages/dashboard/Tutor Dashboard/RevenueHistory";
+import ReportsAndAnalytics from "../pages/dashboard/Admin Dashboard/ReportsAndAnalytics";
 
 export const router=createBrowserRouter([
     {
@@ -153,12 +154,22 @@ export const router=createBrowserRouter([
                 </AdminRoute>
             },
             {
+                path:'reportsAndAnalytics',
+                element:<AdminRoute>
+                    <ReportsAndAnalytics/>
+                </AdminRoute>
+            },
+            {
                 path:'payment-success',
-                element:<PaymentSuccess/>
+                element:<StudentRoute>
+                    <PaymentSuccess/>
+                </StudentRoute>
             },
             {
                 path:'payment-cancelled',
-                element:<PaymentCancelled/>
+                element:<StudentRoute>
+                    <PaymentCancelled/>
+                </StudentRoute>
             }
         ]
     }

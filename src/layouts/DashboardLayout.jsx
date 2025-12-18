@@ -36,6 +36,7 @@ const DashboardLayout = () => {
     <>
     <li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
     <li><NavLink to="/dashboard/manage-tutions">Manage Tutions</NavLink></li>
+    <li><NavLink to="/dashboard/reportsAndAnalytics">Reports & Analytics</NavLink></li>
     
     </>
    }
