@@ -2,13 +2,30 @@ import React from 'react';
 import userImg from '../../../assets/User.png';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../hooks/useAuth';
 const AppliedTutorCard = ({applied,queryClient,user}) => {
     const {expectedSalary,experience,qualifications,status,tutionId,subject,days,location,teachingTime,studentClass,tutorPhone,_id,displayName,tutorEmail,appliedAt,studentEmail,photoURL }=applied;
     
+    
 const axiosSecure=useAxiosSecure();
 
-    const handleApproveTutor=id=>{
-        return updateTutorStatus(id,'approved');
+    const handleApproveTutor=async(id)=>{
+        const paymentInfo={
+            tutorReqId:id,
+            tutionId,
+            studentName:user?.displayName,
+            studentEmail,
+            tutorName:displayName,
+            tutorEmail,
+            tutorPhone,
+            cost:expectedSalary,
+        }
+        const res=await axiosSecure.post('/payment-checkout-session',paymentInfo);
+        console.log(res.data);
+        window.location.href= res.data.url;
+
+        // if successful payment ,then return to this:
+        // return updateTutorStatus(id,'approved');
     }
     const handleRejectTutor=id=>{
         return updateTutorStatus(id,'rejected');

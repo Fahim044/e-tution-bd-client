@@ -24,6 +24,9 @@ import AdminRoute from "./AdminRoute";
 import StudentRoute from "./StudentRoute";
 import AllTutors from "../pages/All Tutors/AllTutors";
 import TutorDetails from "../pages/All Tutors/TutorDetails";
+import PaymentSuccess from "../pages/Payments/PaymentSuccess";
+import PaymentCancelled from "../pages/Payments/PaymentCancelled";
+import RevenueHistory from "../pages/dashboard/Tutor Dashboard/RevenueHistory";
 
 export const router=createBrowserRouter([
     {
@@ -133,7 +136,9 @@ export const router=createBrowserRouter([
             },
             {
                 path:'revenue-history',
-                element:'/dashboard/revenue-history'
+                element:<TutorRoute>
+                    <RevenueHistory/>
+                </TutorRoute>
             },
             {
                 path:"manage-users",
@@ -146,6 +151,14 @@ export const router=createBrowserRouter([
                 element:<AdminRoute>
                     <ManageTutions/>
                 </AdminRoute>
+            },
+            {
+                path:'payment-success',
+                element:<PaymentSuccess/>
+            },
+            {
+                path:'payment-cancelled',
+                element:<PaymentCancelled/>
             }
         ]
     }
