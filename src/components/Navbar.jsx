@@ -77,8 +77,10 @@ const Navbar = () => {
     
     :
  <>
- <Link to="/auth/login" className="btn bg-primary1">Login</Link>
-    <Link to="/auth/register" className="btn text-primary1 btn-outline mx-2 ">Register</Link>   
+<div className='flex flex-col md:flex-row  justify-center'>
+   <Link to="/auth/login" className="btn bg-primary1">Login</Link>
+    <Link to="/auth/register" className="btn text-primary1 btn-outline mx-2 ">Register</Link> 
+  </div>  
     </>
 
 }
