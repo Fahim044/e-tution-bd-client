@@ -3,7 +3,7 @@ import Logo from './Logo';
 import { Link } from 'react-router';
 import { FaFacebook, FaInstagramSquare, FaLinkedin, FaRegCopyright, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-
+import { FaGithub } from "react-icons/fa";
 const Footer = () => {
     return (
         <>
@@ -34,11 +34,12 @@ const Footer = () => {
             <div className='space-y-3'>
             <p className='font-semibold text-primary1'>Follow Us </p>
         <div className='flex gap-4'>
-        <Link><FaFacebook /></Link>
-        <Link><FaYoutube /></Link>
-        <Link><FaXTwitter /></Link>
-        <Link><FaInstagramSquare /></Link>
-        <Link><FaLinkedin /></Link>
+        <Link to="https://www.facebook.com/fahim.faysal.3150/" target='_blank'><FaFacebook /></Link>
+        <Link to="https://www.youtube.com/" target='_blank'><FaYoutube /></Link>
+        <Link to="https://x.com/" target='_blank'><FaXTwitter /></Link>
+        {/* <Link><FaInstagramSquare /></Link> */}
+        <Link to="https://github.com/Fahim044" target='_blank'><FaGithub /></Link>
+        <Link to="https://www.linkedin.com/in/fahimfaysal3150/" target='_blank'><FaLinkedin /></Link>
         </div>
             </div>
         </div>
